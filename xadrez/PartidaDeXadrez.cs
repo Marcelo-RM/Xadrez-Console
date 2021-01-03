@@ -5,7 +5,6 @@ namespace xadrez
 {
     class PartidaDeXadrez
     {
-
         public Tabuleiro tab { get; private set; }
         public int turno { get; private set; }
         public Cor jogadorAtual { get; private set; }
@@ -125,16 +124,16 @@ namespace xadrez
 
         public HashSet<Peca> pecasEmJogo(Cor cor)
         {
-            HashSet<Peca> pecas = new HashSet<Peca>();
+            HashSet<Peca> aux = new HashSet<Peca>();
             foreach (Peca peca in pecas)
             {
                 if (peca.cor == cor)
                 {
-                    pecas.Add(peca);
+                    aux.Add(peca);
                 }
             }
-            pecas.ExceptWith(pecasCapturadas(cor));
-            return pecas;
+            aux.ExceptWith(pecasCapturadas(cor));
+            return aux;
         }
 
         public void colocarNovaPeca(char coluna, int linha, Peca peca)
